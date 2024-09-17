@@ -18,3 +18,5 @@ CREATE TABLE user_reviews (
     review TEXT,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+http://localhost/login-form-with-database-connection-main/login/index.html
