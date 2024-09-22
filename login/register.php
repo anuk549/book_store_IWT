@@ -5,7 +5,7 @@ if (isset($_POST['signUp'])) {
     $firstName = $_POST['fName'];
     $lastName = $_POST['lName'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);  // Encrypt password
+    $password = md5($_POST['password']); 
 
     // Check if email already exists
     $checkEmail = "SELECT * FROM users WHERE email='$email'";
@@ -27,7 +27,7 @@ if (isset($_POST['signUp'])) {
 
 if (isset($_POST['signIn'])) {
     $email = $_POST['email'];
-    $password = md5($_POST['password']);  // Encrypt password
+    $password = md5($_POST['password']); 
     
     $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
