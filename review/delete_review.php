@@ -3,7 +3,7 @@ session_start();
 include("../connect.php");
 
 if (isset($_POST['deleteReview']) && isset($_SESSION['email'])) {
-    $review_id = intval($_POST['review_id']); // Ensure review_id is an integer
+    $review_id = intval($_POST['review_id']); 
     $user_email = $_SESSION['email'];
 
     // Get the user id from the session's email

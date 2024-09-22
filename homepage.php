@@ -18,15 +18,16 @@ include("books/fetch_books.php");
         <?php include("login/header.php"); ?>
     </div>
 
-    <div style="text-align:center; padding:2%;">
-        <h2>Welcome to Our Bookstore</h2>
+    <div class="main-content">
+        <h2 class="welcome-message">Welcome to Our Bookstore</h2>
         <div class="books">
             <?php
             foreach ($books as $book) {
                 echo "<div class='book'>";
-                echo "<img src='" . htmlspecialchars($book['image']) . "' alt='" . htmlspecialchars($book['title']) . "' />";
-                echo "<p><strong>" . htmlspecialchars($book['title']) . "</strong></p>";
-                echo "<p>by " . htmlspecialchars($book['author']) . "</p>";
+                echo "<img src='img/" . htmlspecialchars($book['image']) . "' alt='" . htmlspecialchars($book['title']) . "' class='book-image' />";
+                echo "<p class='book-title'><strong>" . htmlspecialchars($book['title']) . "</strong></p>";
+                echo "<p class='book-author'>by " . htmlspecialchars($book['author']) . "</p>";
+                echo "<p class='book-description'>" . htmlspecialchars($book['description']) . "</p>";
                 echo "<a href='review/review.php?book_id=" . htmlspecialchars($book['id']) . "' class='show-review-button'>Show Reviews</a>";
                 echo "</div>";
             }

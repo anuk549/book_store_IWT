@@ -1,5 +1,4 @@
 <?php
-// Include database connection
 include("connect.php");
 
 // Fetch books
