@@ -1,161 +1,146 @@
-
-http://localhost/login-form-with-database-connection-main/login/index.html
-
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 22, 2024 at 08:12 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: login
+-- ------------------------------------------------------
+-- Server version	8.0.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `login`
---
-
--- --------------------------------------------------------
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `books`
 --
 
+DROP TABLE IF EXISTS `books`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `books` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `author` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `author` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_general_ci,
+  `price` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `author`, `image`, `description`) VALUES
-(3, 'The Great Gatsby', 'F. Scott Fitzgerald', 'v.jpg', 'A classic novel set in the Jazz Age, telling the story of Jay Gatsby and his unrequited love for Daisy Buchanan.'),
-(4, '1984', 'George Orwell', 'l.jpg', 'A dystopian novel about totalitarianism and surveillance in a future society.'),
-(5, 'To Kill a Mockingbird', 'Harper Lee', 'v.jpg', 'A powerful story about racial injustice and the loss of innocence in the American South.'),
-(6, 'Moby Dick', 'Herman Melville', 'l.jpg', 'The epic tale of Captain Ahab’s obsession with the white whale, Moby Dick.'),
-(7, 'Pride and Prejudice', 'Jane Austen', 'v.jpg', 'A romantic novel that deals with issues of class, marriage, and morality in 19th-century England.');
-
--- --------------------------------------------------------
+LOCK TABLES `books` WRITE;
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES (3,'The Great Gatsby','F. Scott Fitzgerald','v.jpg','A classic novel set in the Jazz Age, telling the story of Jay Gatsby and his unrequited love for Daisy Buchanan.',500),(4,'1984','George Orwell','l.jpg','A dystopian novel about totalitarianism and surveillance in a future society.',600),(5,'To Kill a Mockingbird','Harper Lee','v.jpg','A powerful story about racial injustice and the loss of innocence in the American South.',700),(6,'Moby Dick','Herman Melville','l.jpg','The epic tale of Captain Ahab’s obsession with the white whale, Moby Dick.',450),(7,'Pride and Prejudice','Jane Austen','v.jpg','A romantic novel that deals with issues of class, marriage, and morality in 19th-century England.',250);
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `cart`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart` (
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  `users_id` int NOT NULL,
+  `books_id` int NOT NULL,
+  `qty` varchar(5) NOT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `fk_cart_users1_idx` (`users_id`),
+  KEY `fk_cart_books1_idx` (`books_id`),
+  CONSTRAINT `fk_cart_books1` FOREIGN KEY (`books_id`) REFERENCES `books` (`id`),
+  CONSTRAINT `fk_cart_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `cart`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`) VALUES
-(1, 'gg', 'gg', 'gg@g', '73c18c59a39b18382081ec00bb456d43'),
-(5, 'anuk', 'anuk', 'anuk@a', 'e22025df673b57928452829471989056'),
-(6, 'nn', 'nn', 'nn@a', 'eab71244afb687f16d8c4f5ee9d6ef0e'),
-(7, 'f', 'f', 'kkn@j', 'c4055e3a20b6b3af3d10590ea446ef6c');
-
--- --------------------------------------------------------
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (1,8,3,'1'),(2,8,4,'2');
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `user_reviews`
 --
 
+DROP TABLE IF EXISTS `user_reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_reviews` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `book_title` varchar(255) DEFAULT NULL,
-  `review` text DEFAULT NULL,
-  `book_id` int(11) DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL CHECK (`rating` >= 1 and `rating` <= 5)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `book_title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `review` text COLLATE utf8mb4_general_ci,
+  `book_id` int DEFAULT NULL,
+  `rating` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `book_id` (`book_id`),
+  CONSTRAINT `user_reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `user_reviews_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
+  CONSTRAINT `user_reviews_chk_1` CHECK (((`rating` >= 1) and (`rating` <= 5)))
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `user_reviews`
 --
 
-INSERT INTO `user_reviews` (`id`, `user_id`, `book_title`, `review`, `book_id`, `rating`) VALUES
-(40, 5, NULL, 'good', 5, 2),
-(41, 5, NULL, 'v', 3, 1),
-(42, 1, NULL, 'vc', 3, 3);
+LOCK TABLES `user_reviews` WRITE;
+/*!40000 ALTER TABLE `user_reviews` DISABLE KEYS */;
+INSERT INTO `user_reviews` VALUES (40,5,NULL,'good',5,2),(41,5,NULL,'v',3,1),(42,1,NULL,'vc',3,3);
+/*!40000 ALTER TABLE `user_reviews` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Indexes for dumped tables
+-- Table structure for table `users`
 --
 
---
--- Indexes for table `books`
---
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`id`);
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `lastName` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `user_reviews`
---
-ALTER TABLE `user_reviews`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `book_id` (`book_id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Dumping data for table `users`
 --
 
---
--- AUTO_INCREMENT for table `books`
---
-ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'gg','gg','gg@g','73c18c59a39b18382081ec00bb456d43'),(5,'anuk','anuk','anuk@a','e22025df673b57928452829471989056'),(6,'nn','nn','nn@a','eab71244afb687f16d8c4f5ee9d6ef0e'),(7,'f','f','kkn@j','c4055e3a20b6b3af3d10590ea446ef6c'),(8,'savindu','rashan','savindu@gmail.com','81dc9bdb52d04dc20036dbd8313ed055');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `user_reviews`
---
-ALTER TABLE `user_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `user_reviews`
---
-ALTER TABLE `user_reviews`
-  ADD CONSTRAINT `user_reviews_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_reviews_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-09-28 11:33:05
