@@ -1,0 +1,50 @@
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    color: #3f51b5;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.about-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    margin-bottom: 1rem;
+}
+
+.mission {
+    display: flex;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mission-image {
+    flex: 0 0 200px;
+    margin-right: 2rem;
+}
+
+.mission-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.mission-content h2 {
+    color: #3f51b5;
+    margin-bottom: 1rem;
+}
+
+
+
