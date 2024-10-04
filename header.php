@@ -10,12 +10,12 @@
 <body>
     <div class="head-main">
         <header>
-            <div class="logo">LOGO</div>
+            <div class="logo-div"><img src="img/logo.png" alt="logo" class="logo"></div>
             <nav class="desktop-menu">
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="#">Books</a></li>
-                    <li><a href="#">Categories</a></li>
+                    <li><a href="categories.php">Categories</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </ul>
@@ -30,7 +30,7 @@
                 <div class="mobile-menu">
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="#">Books</a></li>
-                    <li><a href="#">Categories</a></li>
+                    <li><a href="categories.php">Categories</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
                 </div>

@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+  }
+
+  .categories-section {
+    max-width: 1200px;
+    margin: 60px auto 120px auto;
+    padding: 0 20px;
+  }
+
+  .categories-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .categories-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+  }
+
+  .categories-header p {
+    font-size: 16px;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .category-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+
+  .category-icon {
+    width: 64px;
+    height: 64px;
+    background: #e2e8f0;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .category-icon img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.6;
+  }
+
+  .category-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #334155;
+  }
+
+  .show-more {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .show-more-btn {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .show-more-btn:hover {
+    background-color: #eff6ff;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .categories-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categories-header h1 {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .categories-section {
+      margin: 40px auto;
+    }
+
+    .category-card {
+      padding: 20px;
+    }
+  }
