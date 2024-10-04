@@ -5,7 +5,8 @@ main {
 }
 
 h1 {
-    color: #3f51b5;
+    /* color: #3f51b5; */
+    color: #1E293B;
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
 }
@@ -42,7 +43,8 @@ h1 {
 }
 
 .mission-content h2 {
-    color: #3f51b5;
+    /* color: #3f51b5; */
+    color: #1E293B;
     margin-bottom: 1rem;
 }
 

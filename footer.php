@@ -1,5 +1,5 @@
 <footer>
-    <div class="logo">Logo</div>
+    <div class="logo"><h1>Beyond Books</h1></div>
     <nav>
         <ul>
             <li><a href="homepage.php">Home</a></li>
@@ -16,6 +16,6 @@
     </div>
     <p>&copy;2024 Beyond Books. All rights reserved</p>
     <div class="footer-links">
-        <a href="#">Privacy & Policy</a> | <a href="#">Terms & Condition</a>
+        <a href="admin/admin-login.php">Admin Login</a> | <a href="#">Privacy & Policy</a> | <a href="#">Terms & Condition</a>
     </div>
 </footer>
