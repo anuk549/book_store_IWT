@@ -1,18 +1,6 @@
 <?php
 session_start();
 include("books/fetch_books.php");
-
-$featured_products = [
-    ['id' => 1, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 2, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 3, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 4, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 5, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 6, 'title' => 'MedialDownes', 'price' => 69.00],
-    ['id' => 7, 'title' => 'MedialDownes', 'price' => 69.00]
-];
-
-$new_arrivals = $featured_products; // Using same data for demo
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +18,9 @@ $new_arrivals = $featured_products; // Using same data for demo
     <?php include 'header.php'; ?>
 
     <main>
+        <!-- Popup Message Box -->
+    <div id="message-box" class="message-box" style="display:none;"></div>
+    
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -56,16 +47,16 @@ $new_arrivals = $featured_products; // Using same data for demo
                 <div class="product-slider">
                     <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
                     <div class="product-container">
-                        <?php foreach ($featured_products as $product): ?>
+                        <?php foreach ($books as $book): ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <img src="/api/placeholder/200/300"
+                                    <img src="./img/<?php echo $book["image"] ?>"
                                         alt="<?php echo htmlspecialchars($product['title']); ?>">
+                                    <button onclick="addToCart(<?php echo $book['id']?>)" class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                                 </div>
                                 <div class="product-info">
-                                    <h3><?php echo htmlspecialchars($product['title']); ?></h3>
-                                    <p>USD <?php echo number_format($product['price'], 2); ?></p>
-                                    <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                    <h3><?php echo htmlspecialchars($book['title']); ?></h3>
+                                    <p>USD <?php echo number_format($book['price'], 2); ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -82,16 +73,17 @@ $new_arrivals = $featured_products; // Using same data for demo
                 <div class="product-slider">
                     <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
                     <div class="product-container">
-                        <?php foreach ($new_arrivals as $product): ?>
+                        <?php foreach ($books as $book): ?>
                             <div class="product-card">
                                 <div class="product-image">
-                                    <img src="/api/placeholder/200/300"
-                                        alt="<?php echo htmlspecialchars($product['title']); ?>">
+                                    <img src="./img/<?php echo $book["image"]?>"
+                                        alt="<?php echo htmlspecialchars($book['title']); ?>">
+                                        <button onclick="addToCart(<?php echo $book['id']?>)" class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                                 </div>
                                 <div class="product-info">
-                                    <h3><?php echo htmlspecialchars($product['title']); ?></h3>
-                                    <p>USD <?php echo number_format($product['price'], 2); ?></p>
-                                    <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                                    <h3><?php echo htmlspecialchars($book['title']); ?></h3>
+                                    <p>USD <?php echo number_format($book['price'], 2); ?></p>
+                                    
                                 </div>
                             </div>
                         <?php endforeach; ?>
