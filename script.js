@@ -71,3 +71,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function addToCart(bookId) {
+    fetch('cart-proccess/add-cart-proccess.php?book_id=' + bookId)
+        .then(response => response.json())
+        .then(data => {
+            // Display popup message
+            const messageBox = document.getElementById('message-box');
+            messageBox.textContent = data.message;
+            messageBox.style.display = 'block';
+
+            // Automatically hide the message after 3 seconds
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
